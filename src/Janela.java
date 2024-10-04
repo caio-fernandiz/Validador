@@ -18,19 +18,28 @@ public class Janela extends JFrame{
      * os dados informados forem validados, para que o usuário saiba que foram 
      * aceitas.
      */
-    
-  
-    //Será responsável por permitir o usuário digitar o nome dele.
-    private JTextField jtfDigitaNome;
+        
     //Esse é o botão que será clicado pelo usuário quando ele querer 
     //que as informações dadas por ele sejam validadas.
     private JButton jbBotaoValidar;
+   
+    //Será responsável por permitir o usuário digitar o nome dele.
+    private JTextField jtfDigitaNome;
     //Será responsável por indicar aonde o usuário irá digitar o nome.
     private JLabel jlIndicaNome;
-
-    //será responsável por receber e mostrar o nome digita.
+    //será responsável por receber e mostrar o nome digitado.
     private JLabel jlRecebeNome;
  
+    //Será responsável por permitir o usuário digitar a da 
+    //de nascimento dele.
+    private JTextField jtfDigitaData;
+    //Será responsável por indicar aonde o usuário irá digitar a 
+    //data de nascimento dele;
+    private JLabel jlIndicaData;
+    //será responsável por receber e mostrar a data 
+    //de nascimento digitado
+    private JLabel jlRecebeData;
+
     //Aqui eu começo a criar minha janela, podendo mudar ela sem 
     //precisar ficar digitando o nome da minha janela .
     public Janela(){
@@ -55,7 +64,7 @@ public class Janela extends JFrame{
         //entre os parenteses para que o usuário saiba a função do botão.
         //Esse texto irá aparecer dentro do botão.
         jbBotaoValidar = new JButton("Validar");
-        //Aqui estou inicializando o campo de texto que será digitado.
+        //Aqui estou inicializando o campo de texto que será digitado o nome.
         jtfDigitaNome = new JTextField(); 
         //Aqui estou inicializando o campo de texto que indica aonde digitar.
         //Perceba que digitei "Nome" entre os paretenses, eu faço isso para 
@@ -65,7 +74,6 @@ public class Janela extends JFrame{
         //Aqui estou inicializando o campo de texto que irá aparecer o nome 
         //que o usuário digitar após ser validado.
         jlRecebeNome = new JLabel("");
-
 
         //Aqui estou definindo o tamanho e coordenadas do botão.
         jbBotaoValidar.setBounds(140, 300, 100, 40);
@@ -106,5 +114,13 @@ public class Janela extends JFrame{
 
     public JLabel getJlRecebeNome() {
         return jlRecebeNome;
+    }
+
+    public JTextField getJtfDigitaData() {
+        return jtfDigitaData;
+    }
+
+    public JLabel getJlRecebeData() {
+        return jlRecebeData;
     }
 }

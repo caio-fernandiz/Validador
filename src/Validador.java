@@ -1,6 +1,8 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 public class Validador {
 
     /*
@@ -32,13 +34,32 @@ public class Validador {
                 //que a caixa de texto que serve para digitar o nome 
                 //envie a informação para essa váriavel.
                 String nomeDigitado = janela.getJtfDigitaNome().getText();
+
+                //Esse "if" irá fazer a validação do nome, se essa situação 
+                //acontecer, então o nome não irá aparecer na label que recebe 
+                //o nome e será enviado um aviso em pop-up
+                //Isso só é possível pois a condição exige que "nomeDigitado"
+                //seja igual a nada, usei o equals justamente para isso.
+                //Da pra ver que só "" sem nada dentro entre os parenteses,
+                //isso que determina o "nada".
+                if(nomeDigitado.equals("")){
+
+                    JOptionPane.showMessageDialog(null, "Está falantando informações");
+                }
+
+                //Já esse else if irá ser responsável por enviar o nome.
+                //Aqui eu consigo fazer o equals desejar algo diferente 
+                //do que está entre os parentenses, eu faço isso colocando
+                //o "!" antes de "nomeDigitado".
+                else if(!nomeDigitado.equals("")){
                 //E aqui a string chamada "nomeDigitado" irá enviar 
                 //a informação para a várivael "nome" na classe "Dados".
                 dados.setNome(nomeDigitado);
 
                 //E aqui a informação do nome será enviada para a janela 
-                //que irá mostrar o nome quando ele for validado
+                //que irá mostrar o nome quando ele for validado.
                 janela.getJlRecebeNome().setText(dados.getNome());
+                }
             }
         });
 
