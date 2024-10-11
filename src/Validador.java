@@ -38,6 +38,7 @@ public class Validador {
                 String nomeDigitado = janela.getJtfDigitaNome().getText();
                 String dataDigitada = janela.getJtfDigitaData().getText();
                 String cpfDigitado = janela.getJtfDigitaCPF().getText();
+                String emailDigitado = janela.getJtfDigitaEmail().getText();
 
                 //Esse "if" irá fazer a validação do nome, se essa situação 
                 //acontecer, então o nome não irá aparecer na label que recebe 
@@ -51,7 +52,7 @@ public class Validador {
                 //"ou". Explicando melhor, se nome ou data não tiver nada, irá receber
                 //um aviso, ou seja, se nome tiver informação mas a data não tem nada, 
                 //o aviso será enviado da mesma forma. 
-                if(nomeDigitado.equals("") || dataDigitada.equals("") || cpfDigitado.equals("")){
+                if(nomeDigitado.equals("") || dataDigitada.equals("") || cpfDigitado.equals("") || emailDigitado.equals("")){
 
                     JOptionPane.showMessageDialog(null, "Está falantando informações");
                 }
@@ -62,7 +63,7 @@ public class Validador {
                 //o "!" antes de "nomeDigitado" e das demais variáveis. 
                 //Esse "&&" siginfica "e". Isso quer dizer que o "else if" 
                 //só ira ativar se todas as informações forem dadas.
-                else if(!nomeDigitado.equals("") && !dataDigitada.equals("") && !cpfDigitado.equals("")){
+                else if(!nomeDigitado.equals("") && !dataDigitada.equals("") && !cpfDigitado.equals("") && !emailDigitado.equals("")){
                 //E aqui a string chamada "nomeDigitado" irá enviar 
                 //a informação para a várivael "nome" na classe "Dados".
                 dados.setNome(nomeDigitado);
@@ -75,7 +76,11 @@ public class Validador {
                 //E aqui a string chamada "cpfDigitado" irá enviar 
                 //a informação para a várivael "CPF" na classe "Dados".   
                 dados.setCPF(cpfDigitado);
-                
+
+                //E aqui a string chamada "emailDigitado" irá enviar 
+                //a informação para a várivael "email" na classe "Dados".
+                dados.setEmail(emailDigitado);
+
                 //E aqui a informação do nome será enviada para a janela 
                 //que irá mostrar o nome quando ele for validado. 
                 //Isso vale para todas as informações pedidas, a 
@@ -83,6 +88,7 @@ public class Validador {
                 janela.getJlRecebeNome().setText(dados.getNome());
                 janela.getJlRecebeData().setText(dados.getData());
                 janela.getJlRecebeCPF().setText(dados.getCPF());
+                janela.getJlRecebeEmail().setText(dados.getEmail());
                 }
             }
         });

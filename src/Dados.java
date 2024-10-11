@@ -29,6 +29,9 @@ public class Dados {
     //de digitos de um cpf.
     private String CPF;
 
+    //E aqui será feita a String "email". 
+    private String email;
+
     //Aqui irei gerar os getter e setter de cada varíavel. 
     //Eles são metódos que permitem o acesso indireto 
     //para as varíaveis privadas dessas classe.
@@ -75,5 +78,13 @@ public class Dados {
         return CPF;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
     
+    public String getEmail() {
+        return email;
+    }
+
+
 }

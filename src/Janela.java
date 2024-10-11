@@ -47,6 +47,13 @@ public class Janela extends JFrame{
     //Será responsável por receber e mostrar o CPF digitado.
     private JLabel jlRecebeCPF;
 
+     //Será responsável por permitir o usuário digitar o e-mail.
+    private JTextField jtfDigitaEmail;
+    //Será responsável por indicar aonde o usuário irá digitar o e-mail digitado.
+    private JLabel jlIndicaEmail;
+    //Será responsável por receber e mostrar o e-mail digitado.
+    private JLabel jlRecebeEmail;
+
     //Aqui eu começo a criar minha janela, podendo mudar ela sem 
     //precisar ficar digitando o nome da minha janela .
     public Janela(){
@@ -57,7 +64,7 @@ public class Janela extends JFrame{
         //Os dois primeiros números são as coordernadas, os dois 
         //últimos são o tamanho da janela, esse padrão será usado
         //em todos os campos de texto e até no botão.
-        setBounds(800, 300, 400, 400);
+        setBounds(800, 300, 400, 450);
         //Aqui irei definir o titulo da janela.
         setTitle("Validador");
         //Aqui irei definir que o aplicativo deve encerrar quando clicar no X 
@@ -91,7 +98,7 @@ public class Janela extends JFrame{
         //que o usuário digitar após ser validada.
         jlRecebeData = new JLabel();
 
-         //Aqui estou inicializando o campo de texto que será digitado o CPF;
+         //Aqui estou inicializando o campo de texto que será digitado o CPF.
         jtfDigitaCPF = new JTextField();
         //Aqui estou inicializando o campo de texto que indica aonde digitar o CPF.
         jlIndicaCPF = new JLabel("CPF");
@@ -99,8 +106,16 @@ public class Janela extends JFrame{
         //que o usuário digitar após ser validado.
         jlRecebeCPF = new JLabel();
 
+        //Aqui estou inicializando o campo de texto que será digitado o e-mail.
+        jtfDigitaEmail = new JTextField();
+        //Aqui estou inicializando o campo de texto que indica aonde digitar o e-mail.
+        jlIndicaEmail = new JLabel("e-mail");
+        //Aqui estou inicializando o campo de texto que irá aparecer o e-mail
+        //que o usuário digitar após ser validado.
+        jlRecebeEmail = new JLabel();
+
         //Aqui estou definindo o tamanho e coordenadas do botão.
-        jbBotaoValidar.setBounds(140, 300, 100, 40);
+        jbBotaoValidar.setBounds(140, 350, 100, 40);
 
         //Aqui irei definir o tamanho e coordernadas dos campos de textos
         //dentro da janela. Isso inclui os para digitar ou apenas visualizar.
@@ -115,6 +130,10 @@ public class Janela extends JFrame{
         jtfDigitaCPF.setBounds(20, 190, 150, 30);
         jlIndicaCPF.setBounds(20,160, 150, 30);
         jlRecebeCPF.setBounds(200, 190, 150, 30);
+
+        jtfDigitaEmail.setBounds(20, 260, 150, 30);
+        jlIndicaEmail.setBounds(20, 230, 150, 30);
+        jlRecebeEmail.setBounds(200, 260, 150, 30);
 
 
         //aqui estou adicionando o botão na janela.
@@ -132,6 +151,10 @@ public class Janela extends JFrame{
         add(jtfDigitaCPF);
         add(jlIndicaCPF);
         add(jlRecebeCPF);
+
+        add(jtfDigitaEmail);
+        add(jlIndicaEmail);
+        add(jlRecebeEmail);
 
         //Aqui irei definiri a visibilidade da janela, irei colocar true para que 
         //ela se torne viísvel.
@@ -166,5 +189,13 @@ public class Janela extends JFrame{
 
     public JLabel getJlRecebeCPF() {
         return jlRecebeCPF;
+    }
+
+    public JTextField getJtfDigitaEmail() {
+        return jtfDigitaEmail;
+    }
+
+    public JLabel getJlRecebeEmail() {
+        return jlRecebeEmail;
     }
 }
