@@ -24,8 +24,10 @@ public class Dados {
     //usar a calasse "SimpleDataFormat"
     SimpleDateFormat formataData= new SimpleDateFormat("dd/MM/yyyy");
     
-    
-
+    //Irei adicionar a varíavel que irá guardar o CPF. Ela será
+    //uma "String" pois o tipo "int" não consegue sustenta a quantidade 
+    //de digitos de um cpf.
+    private String CPF;
 
     //Aqui irei gerar os getter e setter de cada varíavel. 
     //Eles são metódos que permitem o acesso indireto 
@@ -64,4 +66,14 @@ public class Dados {
         }
         return "";
     }
+
+    public void setCPF(String cPF) {
+        CPF = cPF;
+    }
+
+    public String getCPF() {
+        return CPF;
+    }
+
+    
 }

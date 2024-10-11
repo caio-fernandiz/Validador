@@ -23,22 +23,29 @@ public class Janela extends JFrame{
     //que as informações dadas por ele sejam validadas.
     private JButton jbBotaoValidar;
    
-    //Será responsável por permitir o usuário digitar o nome dele.
+    //Será responsável por permitir o usuário digitar o nome.
     private JTextField jtfDigitaNome;
     //Será responsável por indicar aonde o usuário irá digitar o nome.
     private JLabel jlIndicaNome;
-    //será responsável por receber e mostrar o nome digitado.
+    //Será responsável por receber e mostrar o nome digitado.
     private JLabel jlRecebeNome;
  
     //Será responsável por permitir o usuário digitar a da 
-    //de nascimento dele.
+    //de nascimento.
     private JTextField jtfDigitaData;
     //Será responsável por indicar aonde o usuário irá digitar a 
-    //data de nascimento dele;
+    //data de nascimento.
     private JLabel jlIndicaData;
-    //será responsável por receber e mostrar a data 
-    //de nascimento digitado
+    //Será responsável por receber e mostrar a data 
+    //de nascimento digitado.
     private JLabel jlRecebeData;
+
+    //Será responsável por permitir o usuário digitar o CPF.
+    private JTextField jtfDigitaCPF;
+    //Será responsável por indicar aonde o usuário irá digitar o CPF.
+    private JLabel jlIndicaCPF;
+    //Será responsável por receber e mostrar o CPF digitado.
+    private JLabel jlRecebeCPF;
 
     //Aqui eu começo a criar minha janela, podendo mudar ela sem 
     //precisar ficar digitando o nome da minha janela .
@@ -74,15 +81,23 @@ public class Janela extends JFrame{
         jlIndicaNome = new JLabel("Nome");
         //Aqui estou inicializando o campo de texto que irá aparecer o nome 
         //que o usuário digitar após ser validado.
-        jlRecebeNome = new JLabel("");
+        jlRecebeNome = new JLabel();
 
         //Aqui estou inicializando o campo de texto que será digitado a data.
         jtfDigitaData = new JTextField();
         //Aqui estou inicializando o campo de texto que indica aonde digitar a data.
         jlIndicaData = new JLabel("Data de Nascimento");
         //Aqui estou inicializando o campo de texto que irá aparecer a data 
+        //que o usuário digitar após ser validada.
+        jlRecebeData = new JLabel();
+
+         //Aqui estou inicializando o campo de texto que será digitado o CPF;
+        jtfDigitaCPF = new JTextField();
+        //Aqui estou inicializando o campo de texto que indica aonde digitar o CPF.
+        jlIndicaCPF = new JLabel("CPF");
+        //Aqui estou inicializando o campo de texto que irá aparecer o CPF
         //que o usuário digitar após ser validado.
-        jlRecebeData = new JLabel("");
+        jlRecebeCPF = new JLabel();
 
         //Aqui estou definindo o tamanho e coordenadas do botão.
         jbBotaoValidar.setBounds(140, 300, 100, 40);
@@ -95,7 +110,11 @@ public class Janela extends JFrame{
 
         jtfDigitaData.setBounds(20, 120, 150, 30);
         jlIndicaData.setBounds(20, 90, 150, 30);   
-        jlRecebeData.setBounds(200, 120, 150, 30);     
+        jlRecebeData.setBounds(200, 120, 150, 30);    
+        
+        jtfDigitaCPF.setBounds(20, 190, 150, 30);
+        jlIndicaCPF.setBounds(20,160, 150, 30);
+        jlRecebeCPF.setBounds(200, 190, 150, 30);
 
 
         //aqui estou adicionando o botão na janela.
@@ -109,6 +128,10 @@ public class Janela extends JFrame{
         add(jtfDigitaData);
         add(jlIndicaData);
         add(jlRecebeData);
+
+        add(jtfDigitaCPF);
+        add(jlIndicaCPF);
+        add(jlRecebeCPF);
 
         //Aqui irei definiri a visibilidade da janela, irei colocar true para que 
         //ela se torne viísvel.
@@ -135,5 +158,13 @@ public class Janela extends JFrame{
 
     public JLabel getJlRecebeData() {
         return jlRecebeData;
+    }
+
+    public JTextField getJtfDigitaCPF() {
+        return jtfDigitaCPF;
+    }
+
+    public JLabel getJlRecebeCPF() {
+        return jlRecebeCPF;
     }
 }
