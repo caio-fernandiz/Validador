@@ -64,9 +64,10 @@ public class Janela extends JFrame{
         //entre os parenteses para que o usuário saiba a função do botão.
         //Esse texto irá aparecer dentro do botão.
         jbBotaoValidar = new JButton("Validar");
+
         //Aqui estou inicializando o campo de texto que será digitado o nome.
         jtfDigitaNome = new JTextField(); 
-        //Aqui estou inicializando o campo de texto que indica aonde digitar.
+        //Aqui estou inicializando o campo de texto que indica aonde digitar o nome.
         //Perceba que digitei "Nome" entre os paretenses, eu faço isso para 
         //que tenha esse texti escruti dentro do campo, algo diferente do 
         //campo de texto em que precisa digitar.
@@ -75,27 +76,39 @@ public class Janela extends JFrame{
         //que o usuário digitar após ser validado.
         jlRecebeNome = new JLabel("");
 
+        //Aqui estou inicializando o campo de texto que será digitado a data.
+        jtfDigitaData = new JTextField();
+        //Aqui estou inicializando o campo de texto que indica aonde digitar a data.
+        jlIndicaData = new JLabel("Data de Nascimento");
+        //Aqui estou inicializando o campo de texto que irá aparecer a data 
+        //que o usuário digitar após ser validado.
+        jlRecebeData = new JLabel("");
+
         //Aqui estou definindo o tamanho e coordenadas do botão.
         jbBotaoValidar.setBounds(140, 300, 100, 40);
-        //Aqui irei definir o tamanho e coordernadas do campo de texto.
-        //dentro da janela.
+
+        //Aqui irei definir o tamanho e coordernadas dos campos de textos
+        //dentro da janela. Isso inclui os para digitar ou apenas visualizar.
         jtfDigitaNome.setBounds(20, 50, 150, 30);
-        //Aqui irei definir o tamanho e coordenadas do campo de texto 
-        //dentro da janela.
         jlIndicaNome.setBounds(20, 20, 150, 30);
-        //Aqui irei definir o tamanho e as coordernadas do campo de texto
-        //dentro da janela.
         jlRecebeNome.setBounds(200, 50, 150, 30);
+
+        jtfDigitaData.setBounds(20, 120, 150, 30);
+        jlIndicaData.setBounds(20, 90, 150, 30);   
+        jlRecebeData.setBounds(200, 120, 150, 30);     
 
 
         //aqui estou adicionando o botão na janela.
         add(jbBotaoValidar);
-        //Aqui irei adicionar o campo de texto na janela.
+
+        //Aqui irei adicionar os campos de textos na janela.
         add(jtfDigitaNome);
-        //Aqui irei adicionar o campo de texto na janela.
-        add(jlIndicaNome);
-        //Aqui irei adicionar o campo de texto na janela.
+        add(jlIndicaNome); 
         add(jlRecebeNome);
+
+        add(jtfDigitaData);
+        add(jlIndicaData);
+        add(jlRecebeData);
 
         //Aqui irei definiri a visibilidade da janela, irei colocar true para que 
         //ela se torne viísvel.

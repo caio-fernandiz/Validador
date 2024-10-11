@@ -33,7 +33,11 @@ public class Validador {
                 //Aqui eu criei uma string chamada "nomeDigitado" para 
                 //que a caixa de texto que serve para digitar o nome 
                 //envie a informação para essa váriavel.
+                //Irei fazer isso para os diferentes tipos de informações
+                //que serão digitadas pelo usuário.
                 String nomeDigitado = janela.getJtfDigitaNome().getText();
+                String dataDigitada = janela.getJtfDigitaData().getText();
+                boolean datValida = dados.setData(dataDigitada);
 
                 //Esse "if" irá fazer a validação do nome, se essa situação 
                 //acontecer, então o nome não irá aparecer na label que recebe 
@@ -42,7 +46,7 @@ public class Validador {
                 //seja igual a nada, usei o equals justamente para isso.
                 //Da pra ver que só "" sem nada dentro entre os parenteses,
                 //isso que determina o "nada".
-                if(nomeDigitado.equals("")){
+                if(nomeDigitado.equals("") || dataDigitada.equals("")){
 
                     JOptionPane.showMessageDialog(null, "Está falantando informações");
                 }
@@ -51,14 +55,15 @@ public class Validador {
                 //Aqui eu consigo fazer o equals desejar algo diferente 
                 //do que está entre os parentenses, eu faço isso colocando
                 //o "!" antes de "nomeDigitado".
-                else if(!nomeDigitado.equals("")){
+                else if(!nomeDigitado.equals("") && !dataDigitada.equals("")){
                 //E aqui a string chamada "nomeDigitado" irá enviar 
                 //a informação para a várivael "nome" na classe "Dados".
                 dados.setNome(nomeDigitado);
-
+                
                 //E aqui a informação do nome será enviada para a janela 
                 //que irá mostrar o nome quando ele for validado.
                 janela.getJlRecebeNome().setText(dados.getNome());
+                janela.getJlRecebeData().setText(dados.getData());
                 }
             }
         });
