@@ -1,6 +1,9 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 public class Validador {
@@ -52,43 +55,92 @@ public class Validador {
                 //"ou". Explicando melhor, se nome ou data não tiver nada, irá receber
                 //um aviso, ou seja, se nome tiver informação mas a data não tem nada, 
                 //o aviso será enviado da mesma forma. 
-                if(nomeDigitado.equals("") || dataDigitada.equals("") || cpfDigitado.equals("") || emailDigitado.equals("")){
+                if(nomeDigitado.equals("") || dataDigitada.equals("")){
 
                     JOptionPane.showMessageDialog(null, "Está falantando informações");
                 }
 
-                //Já esse else if irá ser responsável por enviar o nome.
-                //Aqui eu consigo fazer o equals desejar algo diferente 
-                //do que está entre os parentenses, eu faço isso colocando
-                //o "!" antes de "nomeDigitado" e das demais variáveis. 
-                //Esse "&&" siginfica "e". Isso quer dizer que o "else if" 
-                //só ira ativar se todas as informações forem dadas.
-                else if(!nomeDigitado.equals("") && !dataDigitada.equals("") && !cpfDigitado.equals("") && !emailDigitado.equals("")){
-                //E aqui a string chamada "nomeDigitado" irá enviar 
-                //a informação para a várivael "nome" na classe "Dados".
-                dados.setNome(nomeDigitado);
+                //Agora eu criei um "else" que irá ter vários "if's" dentro 
+                //que irão servir para cada situação de cada dado informado pelo 
+                //usário.
+                else {
+                
+                    //Esse "if" será responsável por impedir um nome que tenha qualquer caractere 
+                    //que não seja uma letra seja validado pelo programa.
+                    if(!nomeDigitado.matches(".*[\\p{L}]+\\s+[\\p{L}]+.*")){
+                        JOptionPane.showMessageDialog(null, "Nome inválido");
+                    }
 
-                //E aqui uma variável "boolean" "dataValida" irá enviar 
-                //a informação para a várivael "data" na classe "Dados".
-                //Ela será a responsável por falar se a data é verdadeira.
-                boolean datValida = dados.setData(dataDigitada);
+                    //Esse "if" será responsável por impedir uma data que tenha qualquer caractere 
+                    //que não seja um número ou uma barra seja validado pelo programa.
+                    if(!dataDigitada.matches("\\d{2}/\\d{2}/\\d{4}")){
+                        JOptionPane.showMessageDialog(null, "Data inválida");
+                    }
 
-                //E aqui a string chamada "cpfDigitado" irá enviar 
-                //a informação para a várivael "CPF" na classe "Dados".   
-                dados.setCPF(cpfDigitado);
+                    //Esse "else if" é o responsável por validar todas as informações dadas 
+                    //pelo usuário caso elas estejam de acordo com o esperado e não sejam 
+                    //barradas por nenhum dos "if" anteriores. Isso é, se forem corretamente 
+                    //digitados. Ainda irei fazer a validação caso não estejam de acordo com 
+                    //outras regras.
+                    else if(nomeDigitado.matches(".*[\\p{L}]+\\s+[\\p{L}]+.*") && dataDigitada.matches("\\d{2}/\\d{2}/\\d{4}")){
 
-                //E aqui a string chamada "emailDigitado" irá enviar 
-                //a informação para a várivael "email" na classe "Dados".
-                dados.setEmail(emailDigitado);
+                        //Esse if é para conferir se a data é válida mesmo que ela
+                        //tenha sido digitda da maneira correta.
+                        if(!dados.setData(dataDigitada)){
+                            JOptionPane.showMessageDialog(null, "Data inválida");
+                        }
 
-                //E aqui a informação do nome será enviada para a janela 
-                //que irá mostrar o nome quando ele for validado. 
-                //Isso vale para todas as informações pedidas, a 
-                //lógica é a mesma.
-                janela.getJlRecebeNome().setText(dados.getNome());
-                janela.getJlRecebeData().setText(dados.getData());
-                janela.getJlRecebeCPF().setText(dados.getCPF());
-                janela.getJlRecebeEmail().setText(dados.getEmail());
+                        else{
+                        
+                        //E aqui uma variável "boolean" "dataValida" irá enviar 
+                        //a informação para a várivael "data" na classe "Dados".
+                        //Ela será a responsável por falar se a data é verdadeira.
+                        boolean dataValida = dados.setData(dataDigitada);
+
+                        //Aqui irei adicionar um calcúlo para que só permita a validação 
+                        //da data caso o usuário seja maior de idade.
+
+                        //Aqui eu crio a variável "dataNascimento" do tipo "Date",
+                        //ela pega a "data" que é informada antes e que vai para a 
+                        //classe "dados" utilizando o método get "DataParaDate"
+                        //sem se intromoeter na data informada no método get "getData"
+                        //que será responsável por informar a digitada caso seja válidada.
+                        Date dataNascimento = dados.getDataParaDate();
+                        //Aqui eu converto a váriavel dataNascimento para o tipo "LocalDate".
+                        //Primeiro eu converto o tipo "Date" para "Instant", para que a varíavel
+                        //seja mais precisa, depois eu converto em um objeto do tipo "Zone" ou
+                        //"ZoneDateTime", assim ele fica com um fusu horário definido, que nesse caso 
+                        //é o do computador, já que o tipo "Instant" não é dependente de fusu horários.
+                        //E então o "LocalDate" vai extrair somente a data, sem 
+                        //horas, minutos ou segundos. Dessa maneira ele irá pegar o dia, mês e o ano 
+                        //de nascimento do usuário e irá calcular todos.
+                        LocalDate dataNascimentoLocal = dataNascimento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                        //E aqui nós estamos pegando a data atual, que sempre será a data 
+                        //em que se iniciar o programa.
+                        LocalDate hoje = LocalDate.now();
+                        //Aqui eu calculo a diferença entre a data atual e a data de nascimento
+                        //utilizando o "Period.between".
+                        Period idade = Period.between(dataNascimentoLocal, hoje);
+
+                        //E aqui irei verificar a idade, caso seja menor de 18 anos o 
+                        //usuário ira receber esse aviso.
+                        if(idade.getYears() < 18){
+                            JOptionPane.showMessageDialog(null, "Idade inválida. É necessário ter 18 anos ou mais.");
+                        }
+
+                        //E finalmente, se tudo estiver de acordo, o programa 
+                        //irá validar.
+                        else{
+                        //E aqui a string chamada "nomeDigitado" irá enviar 
+                        //a informação para a várivael "nome" na classe "Dados".
+                        dados.setNome(nomeDigitado);
+
+                        janela.getJlRecebeNome().setText(dados.getNome());
+                        janela.getJlRecebeData().setText(dados.getData());
+                        }
+                        }
+
+                    }
                 }
             }
         });

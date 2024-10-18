@@ -48,6 +48,8 @@ public class Dados {
     //conversão ser necessário é porque o tipo de váriavel "Date"
     //não consegue ser alterada ou interagir com JTextFiedls e parecidos.
     public boolean setData(String dataStr){
+        
+        formataData.setLenient(false);
         //Esse "try" é o que tenta converter o tipoi "Date" para "String"
         //Se caso a data seja válida, será retornado como verdadeiro.
         try {
@@ -69,6 +71,13 @@ public class Dados {
         }
         return "";
     }
+
+    //Esse "get" em especifico serve para que o cálculo de idade 
+    //seja executado corretamento.
+    public Date getDataParaDate() {
+        return this.data;
+    }
+    
 
     public void setCPF(String cPF) {
         CPF = cPF;
